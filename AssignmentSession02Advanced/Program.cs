@@ -124,19 +124,44 @@ namespace AssignmentSession02Advanced
             #endregion
 
             #region Question03
-           // Console.WriteLine("======================================================");
-           // Console.WriteLine("--- Low-Stock Alert---");
-           // Console.WriteLine("======================================================");
-           // Predicate<Product> pred = productPredicate => productPredicate.Stock < 20;
-           //List<Product> listFilter = product.FilterProducts(catalog, pred);
+            // Console.WriteLine("======================================================");
+            // Console.WriteLine("--- Low-Stock Alert---");
+            // Console.WriteLine("======================================================");
+            // Predicate<Product> pred = productPredicate => productPredicate.Stock < 20;
+            //List<Product> listFilter = product.FilterProducts(catalog, pred);
 
-           // foreach(Product filter in listFilter)
-           // {
-           //     Console.WriteLine($"[LOW STOCK] {filter.Name} : only {filter.Stock} left!");
-           // }
+            // foreach(Product filter in listFilter)
+            // {
+            //     Console.WriteLine($"[LOW STOCK] {filter.Name} : only {filter.Stock} left!");
+            // }
 
 
             #endregion
+            
+            #region Delegate Explanation Notes
+
+            /*
+             * ASSIGNMENT DELEGATE TYPES EXPLANATION:
+             * 
+             * 1. Func<Product, bool> (Task 01 - Smart Product Search):
+             *    - Why: Used because searching requires evaluating a condition on a product 
+             *      and returning a boolean (true if it matches the filter, false otherwise).
+             * 
+             * 2. Action<Product> (Task 03.1 - Print Reports):
+             *    - Why: Used because printing a report performs an operation (displaying output to the console) 
+             *      on a Product object without needing to return any value (void).
+             * 
+             * 3. Func<Product, TResult> (Task 03.2 - Transform Products):
+             *    - Why: Used because transforming a product requires taking a Product object as input 
+             *      and returning a new data representation (such as a formatted string).
+             * 
+             * 4. Predicate<Product> (Task 03.3 - Filter Products):
+             *    - Why: Used because filtering requires testing a single Product object against a criteria 
+             *      (like low stock check) and returning a boolean result.
+             */
+
+            #endregion
+
         }
     }
 }
