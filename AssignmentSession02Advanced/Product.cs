@@ -1,5 +1,4 @@
-﻿using AssignmentSession02Advanced;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +25,25 @@ namespace AssignmentSession02Advanced
             }
             return products;
        }
-   }
+       public void PrintReport (List<Product>products ,Action<Product> refAction )
+        {
+            foreach (Product product in products)
+            {
+                refAction(product);
+            }      
+        }
+
+        public List<TResult> TransformProducts<TResult>(List<Product> products , Func<Product, TResult> funcProduct)
+        {
+            List<TResult> productsAdd = new List<TResult>();
+            foreach (Product item in products)
+            {
+                productsAdd.Add(funcProduct(item));
+            
+            }
+            return productsAdd;
+        }
+    }
 } 
 
 

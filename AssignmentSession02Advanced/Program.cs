@@ -1,4 +1,7 @@
-﻿namespace AssignmentSession02Advanced
+﻿using System.Reflection.Emit;
+using System.Threading.Channels;
+
+namespace AssignmentSession02Advanced
 {
     internal class Program
     {
@@ -17,6 +20,7 @@
                         new Product{Id=8,Name="Novel",Category="Books",Price=20,Stock=60},
                         new Product{Id=9,Name="Headphones",Category="Electronics",Price=150}
                     };
+
             #region Question01
             //Product product = new Product();
 
@@ -66,6 +70,55 @@
             //}
 
             //Console.WriteLine("===============================================================");
+
+            #endregion
+
+            #region Question02
+
+            Product product = new Product();
+            Action<Product> actionShort = productShort => Console.WriteLine($"{productShort.Name} - {productShort.Price:c}");
+            Console.WriteLine("======================================================");
+            Console.WriteLine("---ShortReport---");
+            Console.WriteLine("======================================================");
+
+            product.PrintReport(catalog, actionShort);
+
+
+
+            
+            Action<Product> actionDetials = productDetials => Console.WriteLine($"[{productDetials.Category}]{productDetials.Name} |" +
+                $"price : {productDetials.Price:c} | Stock {productDetials.Stock}");
+            Console.WriteLine("======================================================");
+            Console.WriteLine("--DetailedReport--");
+            Console.WriteLine("======================================================");
+            product.PrintReport(catalog, actionDetials);
+
+            Console.WriteLine("======================================================");
+            Console.WriteLine("--- Summary List---");
+            Console.WriteLine("======================================================");
+
+            Func<Product, string> productSummary = productSummary => $"{productSummary.Name} ({productSummary.Price:c}) ";
+
+            List<string> products= product.TransformProducts(catalog, productSummary);
+
+            foreach (string item in products)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("======================================================");
+            Console.WriteLine("--- Price Labels---");
+            Console.WriteLine("======================================================");
+
+            Func<Product, string> productLabel = productLabel => $"{productLabel.Name} {(productLabel.Price > 100 ? ": Expensive! ":" : Affordable")}";
+
+            List<string> productListLabel = product.TransformProducts(catalog, productLabel);
+
+           foreach (string item in productListLabel)
+            { 
+                Console.WriteLine(item);
+            }
+
 
             #endregion
         }
