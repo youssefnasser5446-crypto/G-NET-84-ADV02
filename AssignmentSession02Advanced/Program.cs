@@ -1,4 +1,5 @@
-﻿using System.Reflection.Emit;
+﻿using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Threading.Channels;
 
 namespace AssignmentSession02Advanced
@@ -118,6 +119,21 @@ namespace AssignmentSession02Advanced
             { 
                 Console.WriteLine(item);
             }
+
+
+            #endregion
+
+            #region Question03
+           // Console.WriteLine("======================================================");
+           // Console.WriteLine("--- Low-Stock Alert---");
+           // Console.WriteLine("======================================================");
+           // Predicate<Product> pred = productPredicate => productPredicate.Stock < 20;
+           //List<Product> listFilter = product.FilterProducts(catalog, pred);
+
+           // foreach(Product filter in listFilter)
+           // {
+           //     Console.WriteLine($"[LOW STOCK] {filter.Name} : only {filter.Stock} left!");
+           // }
 
 
             #endregion

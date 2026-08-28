@@ -43,6 +43,18 @@ namespace AssignmentSession02Advanced
             }
             return productsAdd;
         }
+        public List<Product> FilterProducts(List<Product> products , Predicate<Product> predicate)
+        {
+            List<Product> predicatAdd = new List<Product>();
+            foreach (Product item in products)
+            {
+                if (predicate(item))
+                {
+                    predicatAdd.Add(item);
+                }
+            }
+            return predicatAdd;
+        }
     }
 } 
 
